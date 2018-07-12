@@ -1,0 +1,16 @@
+Started GET "/" for 127.0.0.1 at 2018-07-12 17:32:52 +0300
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ashraf/.rbenv/versions/2.4.4/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by PagesController#home as HTML
+  [1m[36mMilestone Load (2.7ms)[0m  [1m[34mSELECT "milestones".* FROM "milestones"[0m
+  ↳ app/controllers/pages_controller.rb:45
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_banner.html.erb (3991.1ms)
+  Rendered shared/_search_home.html.erb (3.4ms)
+  Rendered pages/home.html.erb within layouts/application (3996.0ms)
+  Rendered shared/_flashes.html.erb (0.3ms)
+[Webpacker] Compiling…
+[Webpacker] Compiled all packs in /home/ashraf/code/ashrafuthman/forgetmenott/public/packs
+Completed 200 OK in 5485ms (Views: 5457.1ms | ActiveRecord: 9.4ms)
+
+

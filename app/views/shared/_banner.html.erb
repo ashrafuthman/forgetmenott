@@ -1,0 +1,45 @@
+<% if user_signed_in? %>
+  <div class="banner banner-signed-in" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.5) 0%, rgba(0,36,61,0.5) 50%), url(<%= image_path 'networking.jpg'%>);">
+    <div class="banner-content">
+      <div class="banner-info">
+        <h1>Forget Me Not</h1>
+        <p>Remember the people you met.</p>
+      </div>
+      <div class="search-button">
+        <%= link_to 'Create a Contact!', new_contact_path, method: :get, class: "btn btn-info btn-lg" %>
+      </div>
+      <div class="name-search">
+        <i class="fas fa-search"></i>
+        <%= form_tag contacts_path, method: :get  do %>
+            <%= text_field_tag :query, params[:query], type: "search", size: "15", class: "form-control search-input-home", 
+            placeholder: "Find a contact by name", onsearch: "toggleDisplay()" %>
+          <%  end %>
+        <script>
+          function toggleDisplay(){
+            var button = document.getElementById('location');
+            if (button.style.display === "block"){
+              button.style.display = "none";
+            }else{
+              button.style.display = "block";    
+            }
+          }
+        </script>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= image_path 'world.jpg' %>);">
+    <div class="banner-content">
+      <h1>Forget Me Not</h1>
+      <p>
+        <span id="banner-typed-text"></span>
+      </p>
+      <div class="button-banner">
+        <%= link_to 'Sign Up', new_user_registration_path, class: "btn btn-info btn-lg", method: :get %>
+      </div>
+      <div class="button-banner home-login">
+        <%= link_to 'Log In', new_user_session_path, class: "btn btn-info", method: :get %>
+      </div>
+    </div>
+  </div>
+<% end %>

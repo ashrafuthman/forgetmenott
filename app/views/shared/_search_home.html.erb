@@ -1,0 +1,152 @@
+<% if user_signed_in? %>
+	<div class="container-fluid home-wrap">
+    <div class="container gradiant-background-home">
+      <div class=" row home-row-searches">
+        <h4 class="text-center"><strong>Search by Tag or Location</strong></h4>
+        <div class="col-md-6 location-column">
+          <div class="location-search text-center ">
+            <%= button_tag 'Location', class: "btn btn-info", onclick: "buttonDisappear()" %>
+          <div id="location" style="display: none;">
+            <script>
+              function buttonDisappear(){
+                var button = document.getElementById('location');
+                if (button.style.display === "none"){
+                  button.style.display = "block";
+                } else {
+                  button.style.display = "none";
+                }
+              }
+            </script>
+              <% @my_locations.each do |location|  %>
+                  <%= link_to location.title, contacts_path(location_id: location.id), onclick: "showLocation()", class: "badge badge-danger location-badge hover-shadow"  %>
+              <%  end  %>
+            </div>
+            <script>
+              function showLocation(){
+                var button = document.getElementById('contact-location');
+                if (button.style.display === "block"){
+                  button.style.display = "none";
+                } else {
+                  button.style.display = "block";
+                }
+              }
+            </script>
+          </div>
+        </div>
+        <div class="col-md-6 tag-column">
+          <div class="tag-search text-center">
+            <%= button_tag'Tags', class: "tags-search btn btn-info", onclick: "toggleFunction()"  %>
+            <script>
+              function toggleFunction(){
+                var button = document.getElementById('tags');
+                if (button.style.display === "none"){
+                  button.style.display = "block";
+                } else {
+                  button.style.display = "none";
+                }
+              }
+            </script>
+          </div>
+          <div id="tags" class="text-center" style="display: none;">
+            <% @tag_names.each do |tag|  %>
+                <%= link_to tag.title, contacts_path(tag_id: tag.id), onclick:"showTags()", class: "badge badge-danger badge-sm badge-tag hover-shadow" %>
+            <% end %>
+            <script>
+              function showTags(){
+                var button = document.getElementById('tags-contacts');
+                if (button.style.display === "block"){
+                  button.style.display = "none";
+                } else {
+                  button.style.display = "block";
+                }
+              }
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container-fluid most-relevant">
+  <div class="container relevants">
+    <h4 class="text-center"><strong>Your Most Recent Milestones</strong></h4>
+    <div class="row">
+      <%= render "shared/milestone_cards" %>
+    </div>
+  </div>
+</div>
+<% end %>
+<% unless user_signed_in? %>
+<div class="container-fluid home-wrap">
+  <div class="container gradiant-background-home">
+    <h4 class="text-center header-why-us"><strong>Why Use Forget Me Not?</strong></h4>
+      <div class="row row-why-us">
+        <div class="col-xs-12 col-sm-3 text-center">
+          <%= image_tag('networking (1).svg', size: "100") %>
+          <h5 class="text-why-us">Master networking</h5>
+        </div>
+        <div class="col-xs-12 col-sm-3 text-center">
+          <%= image_tag('003-worker.svg', size: "100") %>
+          <h5 class="text-why-us">Remember people</h5>
+        </div>
+        <div class="col-xs-12 col-sm-3 text-center">
+          <%= image_tag('001-growth.svg', size: "100") %>
+          <h5 class="text-why-us">Establish beneficial relationships</h5>
+        </div>
+        <div class="col-xs-12 col-sm-3 text-center">
+          <%= image_tag('002-chat-bubble.svg', size: "100") %>
+          <h5 class="text-why-us">Stay current</h5>
+        </div>
+      </div>
+  </div>
+</div>
+<% end %>
+<% if user_signed_in? %>
+<div class="container-fluid home-wrap">
+  <div class="container relevants">
+    <h4 class="text-center header-why-us"><strong>How It Works</strong></h4>
+    <div class="row-why-us text-center ">
+      <div class="col-xs-12 col-sm-3">
+        <%= image_tag('001-employee.svg', size: "100") %>
+        <h5 class="text-how">Create Contacts</h5>
+      </div>
+      <div class="col-xs-12 col-sm-3">
+        <%= image_tag('002-mountain.svg', size: "100") %>
+        <h5 class="text-how">Add a milestone to a contact</h5>
+      </div>
+      <div class="col-xs-12 col-sm-3">
+        <%= image_tag('003-clipboard.svg', size: "100") %>
+        <h5 class="text-how">Manage Your Contacts</h5>
+      </div>
+      <div class="col-xs-12 col-sm-3">
+        <%= image_tag('megaphone.svg', size: "100") %>
+        <h5 class="text-how"> Get Alerts</h5>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+<div class="container-fluid most-relevant text-center">
+  <div class="container about-us gradiant-background-home about-us-wrapper text-center">
+    <h4 class="text-center"><strong>About Us</strong></h4>
+    <div class="col-xs-12 col-sm-4 text-center">
+      <div class="team-card text-center">
+        <%= image_tag('ashraf.jpeg', size: "100", class: "about-us-photo")%>
+        <p class="team-text">I completed one semester in FH Kaernten in Network engineering and I may continue.I will do my best to work on myself to be eligible to work as a web-developer and build the project that I want.</p>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-4 text-center">
+      <div class="team-card text-center">
+        <%= image_tag('bryan.jpeg', size: "100", class: "about-us-photo") %>
+        <p class="team-text">I had studied International Relations at university and decided to work as an EMT for around two years. I plan to try to continue as a web developer and hopefully learn other languages and possibly go into game design!</p>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-4 text-center">
+      <div class="team-card text-center">
+        <%= image_tag('adi.jpeg', size:"100", class: "about-us-photo") %>
+        <p class="team-text"> Worked at a Strategic consulting firm, leading a team in diverse projects. specializing in the finance world- banking, investment funds, insurance companies etc</p>
+      </div>
+    </div>   
+  </div>
+          <p>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></p>
+</div>

@@ -1,12 +1,17 @@
 {
-  "name": "forgetmenott",
+  "name": "networking_app_lewagon",
   "private": true,
   "dependencies": {
     "@rails/webpacker": "3.5",
+    "algoliasearch": "^3.27.1",
     "bootstrap": "3",
-    "jquery": "^3.3.1"
+    "instantsearch.js": "^2.8.0",
+    "jquery": "^3.3.1",
+    "sweetalert": "^2.1.0",
+    "typed.js": "^2.0.7"
   },
   "devDependencies": {
+    "coffeescript": "^2.3.1",
     "webpack-dev-server": "2.11.2"
   }
 }

@@ -10,9 +10,107 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2018_06_20_110103) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "assigments", force: :cascade do |t|
+    t.string "title"
+    t.boolean "completed", default: false
+    t.bigint "milestone_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["milestone_id"], name: "index_assigments_on_milestone_id"
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "position"
+    t.string "company"
+    t.string "username"
+    t.string "email"
+    t.string "phone_number"
+    t.date "date_of_birth"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "first_contact_type"
+    t.string "first_location"
+    t.string "first_tag"
+    t.string "second_tag"
+    t.string "one_note"
+    t.string "first_assigment"
+    t.string "second_assigment"
+    t.index ["user_id"], name: "index_contacts_on_user_id"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "title"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_locations_on_user_id"
+  end
+
+  create_table "milestones", force: :cascade do |t|
+    t.bigint "contact_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "contact_type"
+    t.bigint "location_id"
+    t.string "note"
+    t.string "last_location"
+    t.string "last_tag_two"
+    t.string "last_tag"
+    t.string "assigment_one"
+    t.string "assigment_two"
+    t.index ["contact_id"], name: "index_milestones_on_contact_id"
+    t.index ["location_id"], name: "index_milestones_on_location_id"
+  end
+
+  create_table "subjects", force: :cascade do |t|
+    t.bigint "tag_id"
+    t.bigint "milestone_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["milestone_id"], name: "index_subjects_on_milestone_id"
+    t.index ["tag_id"], name: "index_subjects_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "title"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_tags_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "admin", default: false, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "assigments", "milestones"
+  add_foreign_key "contacts", "users"
+  add_foreign_key "locations", "users"
+  add_foreign_key "milestones", "contacts"
+  add_foreign_key "milestones", "locations"
+  add_foreign_key "subjects", "milestones"
+  add_foreign_key "subjects", "tags"
+  add_foreign_key "tags", "users"
 end

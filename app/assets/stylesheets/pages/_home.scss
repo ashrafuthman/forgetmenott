@@ -1,1 +1,173 @@
-// Specific CSS for your home-page
+.home-wrapper{
+	min-height: 100vh;
+}
+
+.home-wrap{
+  background-color: #f0f1f3;
+}
+
+.gradiant-background-home{  
+  min-height: 200px;
+  border-bottom: 1px  solid gray;
+  padding-bottom: 30px;
+  margin-top: 30px;
+}
+.relevants{
+  min-height: 200px;
+  border-bottom: 1px  solid gray;
+  padding-bottom: 30px;
+  margin-top: 30px;
+}
+
+#location{
+  flex-wrap: wrap;
+  margin: 15px;
+  margin-bottom: 30px;
+}
+#tags{
+  flex-wrap: wrap;
+  margin: 15px;
+  margin-bottom: 30px;
+}
+.location-search{
+  margin: 15px;
+}
+.name-search{
+  display: flex;
+  justify-content: center;
+}
+
+.location-column{
+  margin-top: 15px;
+}
+.tag-column{
+  margin-top: 15px;
+}
+.tag-search{
+  margin: 15px;
+}
+
+.home-row-searches{
+  margin-top: 30px;
+
+}
+.row-why-us{
+  margin: 0 auto;
+  margin-top: 30px;
+}
+.most-relevant{
+  background: #F9F9F9;
+}
+
+.about-us-wrapper{
+  min-height: 250px;
+}
+ // HOVER 
+
+ 
+ // Default options
+$defaultDuration: .3s;
+$primaryColour: #ececec;
+$secondaryColour: #666;
+$shadowColour: rgba(0, 0, 0, .6);
+
+@mixin hideTapHighlightColor() {
+  //Prevent highlight colour when element is tapped
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+@mixin hardwareAccel() {
+  //Improve performance on mobile/tablet devices
+  transform: translateZ(0);
+}
+
+@mixin improveAntiAlias() {
+  //Improve aliasing on mobile/tablet devices
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+
+
+.hover-shadow {
+  transition-duration: $defaultDuration;
+  transition-property: transform;
+
+  @include hideTapHighlightColor();
+  @include hardwareAccel();
+  @include improveAntiAlias();
+
+  &:before {
+    pointer-events: none;
+    position: absolute;
+    z-index: -1;
+    content: '';
+    top: 100%;
+    left: 5%;
+    height: 10px;
+    width: 90%;
+    opacity: 0;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 80%); /* W3C */
+    transition-duration: $defaultDuration;
+    transition-property: transform opacity;
+  }
+
+  &:hover {
+    transform: translateY(-6px);
+    animation-name: hover;
+    animation-duration: 1.5s;
+    animation-delay: $defaultDuration;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+
+    &:before {
+      opacity: .4;
+      transform: translateY(6px);
+      animation-name: hover-shadow;
+      animation-duration: 1.5s;
+      animation-delay: .3s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+    }
+  }
+}
+
+// Search Home Why Us
+.header-why-us{
+  margin: 0 auto;
+}
+
+.text-why-us{
+}
+// ABOUT US
+
+.team-text{
+  opacity: 0;
+  position: absolute;
+}
+.about-us-photo {
+  border-radius: 50%;
+  opacity: 1;
+  position: absolute;
+}
+
+.team-card{
+  width: 100%;
+  height: 150px;
+  position: relative;
+  margin-top: 30px;
+  overflow: scroll;
+  &:hover{
+    transition: all 0.3s;
+    .team-text{
+      opacity: 1;
+      transition: all 0.3s;
+    }
+    .about-us-photo{
+      opacity: 0;
+      transition: all 0.3s;
+    }
+  }
+}
+

@@ -1,0 +1,46 @@
+<% @list_of_contacts.each do |contact|  %>
+  <div class="col-md-4">  
+    <div class="phone-container hover-shadow"> 
+      <div class="contact-go-timeline">
+        <%=link_to new_contact_milestone_path(contact) do %> 
+          <i class="fas fa-plus-circle"></i>
+        <% end %>
+      </div>
+      <%= link_to contact_milestones_path(contact), class: "phone-link" do %>
+        <div class="contact-info">
+          <div class="contact-name">
+            <%= contact.first_name.upcase + " " + contact.last_name.upcase %>
+          </div>
+          <div class="contact-email">
+            <%= contact.email %>
+          </div>
+        </div>
+        <div class="associations">
+          <div class="tags">
+            <p><i class="fas fa-tags"></i></p>
+            <% tags_array = [] %>
+            <% contact.tags.each do |tag| %>
+              <% tags_array << tag.title %>
+            <% end %>
+            <% tags_array.uniq! %>
+            <% tags_array.each do |tag| %>
+              <p class="badge badge-danger badge-sm badge-tag"><%= tag %></p>
+            <% end %>        
+          </div>
+          <div class="locations">
+            <p><i class="fas fa-globe"></i></p>
+            <% locations_array = [] %>
+            <% contact.locations.each do |location| %>
+              <% locations_array   << location.title %>
+            <%end%>
+            <% locations_array.uniq!  %>
+            <% locations_array.each do |location| %>  
+              <p class="badge  badge-danger location-badge"><%= location %></p>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
