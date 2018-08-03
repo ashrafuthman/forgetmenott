@@ -6,7 +6,7 @@
   background-color: #f0f1f3;
 }
 
-.gradiant-background-home{  
+.gradiant-background-home{
   min-height: 200px;
   border-bottom: 1px  solid gray;
   padding-bottom: 30px;
@@ -62,9 +62,9 @@
 .about-us-wrapper{
   min-height: 250px;
 }
- // HOVER 
+ // HOVER
 
- 
+
  // Default options
 $defaultDuration: .3s;
 $primaryColour: #ececec;
@@ -138,14 +138,20 @@ $shadowColour: rgba(0, 0, 0, .6);
   margin: 0 auto;
 }
 
-.text-why-us{
+.text-why-us {
 }
 // ABOUT US
 
-.team-text{
+.team-text {
   opacity: 0;
   position: absolute;
+
 }
+
+.team-card::-webkit-scrollbar {
+  width: 0.2em !important;
+}
+
 .about-us-photo {
   border-radius: 50%;
   opacity: 1;
