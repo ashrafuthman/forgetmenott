@@ -23,7 +23,6 @@ before_action :set_contact
 
   def update
    @assigment = Assigment.find(params[:id])
-   raise
    @assigment.completed = true
    @assigment.save
    redirect_to redirect_to contact_milestones_path(@contact)
