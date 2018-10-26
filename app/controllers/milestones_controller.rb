@@ -174,7 +174,7 @@ before_action :find_contact
             @tag1.save!
             @new_subject1 = Subject.new(milestone_id:@milestone.id, tag_id:@tag1.id)
             @new_subject1.save!
-            if not @milestone.subjects[0].empty?
+            if not @milestone.subjects[0].nil? 
               @milestone.subjects[0].destroy
             end
           end

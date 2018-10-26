@@ -39,7 +39,16 @@
           </div>
         </div>
 
+        <% if @milestones.size == 0 || @milestones.nil? %>
+         <div class="milestones-counter chart-info">
+
+          <h5>You and <%= @contact.first_name.capitalize %> have 0 milestones</h5>
+
+        </div>
+        </div>
+        <% else %>
         <div class="milestones-counter chart-info">
+
           <% counter = 0 %>
           <% @milestones.each do |stone| %>
           <% counter += 1 %>
@@ -48,6 +57,7 @@
           <h5>Last milestone: <strong><%= @milestones.first.created_at.strftime "%B %e %G" %></strong></h5>
         </div>
       </div>
+      <% end %>
       <!-- Middle Column Info -->
       <div class="col-md-4 col-sm-12 align-center">
         <div class="row  text-xs-center">
