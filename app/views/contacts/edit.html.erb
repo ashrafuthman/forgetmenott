@@ -28,7 +28,7 @@
         <div class=" col-md-6">
         <%= f.input :date_of_birth, label: false, as: :date, html5: true, start_year: Date.today.year-90, end_year: Date.today.year - 10, placeholder: 'Date of birth' %>
         </div>
-         <div class = 'newbutton btn'><%= f.submit 'Submit contact'%></div>
+         <div><%= f.submit 'Submit contact',class: 'newbutton btn'%></div>
        <% end %>
      </div>
     </div>
